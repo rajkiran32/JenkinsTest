@@ -1,0 +1,28 @@
+<apex:page showHeader="true" sidebar="false" controller="DisplayRecordsController"   >
+ <apex:pageBlock >
+ <!-- <apex:pageBlockSection title="Account Details">
+        <apex:outputField value="{!account.name}"/>
+        <apex:outputField value="{!account.Description}"/>
+        <apex:outputField value="{!account.Phone}"/>
+         <apex:outputText value="{!account.Phone}"/>
+         
+        
+    </apex:pageBlockSection>-->
+    
+    <apex:pageBlockTable value="{! accounts}" var="ct">
+            <apex:column value="{! ct.name}"/>
+            <apex:column value="{! ct.Description}"/>
+            <apex:column value="{! ct.phone}"/>
+            
+        </apex:pageBlockTable>
+               
+
+ </apex:pageBlock>
+
+
+
+<!-- recordSetVar="accounts"  standardController="Account"-->
+
+
+
+</apex:page>

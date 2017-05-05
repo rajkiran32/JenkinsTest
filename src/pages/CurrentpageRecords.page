@@ -1,0 +1,30 @@
+<apex:page controller="CurrentpageController">
+
+{!$User.Email}
+<apex:detail subject="{!account}" relatedList="true"/>
+
+ <apex:form >
+
+ <apex:pageBlock title="Account Details">
+     <apex:repeat value="{!account}" var="account">
+           
+      Account Name  :    <apex:outputField value="{!account.Name}" label="Name"/><br/><br/>
+      Account Site  :   <apex:outputField value="{!account.site}" title="site"/><br/><br/>
+      Account Type  :   <apex:outputField value="{!account.type}"/><br/><br/>
+      Account Number:        <apex:outputField value="{!account.accountNumber}"/><br/><br/>
+     </apex:repeat>
+ <apex:outputText value="{!message}"/>
+ 
+ </apex:pageBlock>
+ 
+ <apex:pageBlock >
+   <apex:pageBlockTable value="{!account}" var="acc">
+      <apex:column value="{!acc.Name}"/>
+      <apex:column value="{!acc.site}"/>
+      <apex:column value="{!acc.type}"/>
+      <apex:column value="{!acc.accountNumber}"/>
+   </apex:pageBlockTable>
+ </apex:pageBlock>
+ <apex:commandbutton action="{!Back}" value="Back"/>
+ </apex:form>
+</apex:page>

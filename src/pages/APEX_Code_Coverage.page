@@ -1,0 +1,159 @@
+<apex:page controller="codeCoverage">
+    <style>
+        .overlay {
+            display: none;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            top: 0;
+            opacity: 0.3;
+            -moz-opacity: 0.3;
+            width: 100%;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+            filter: alpha(opacity=30);
+            background: #000;
+            -khtml-opacity: 0.3;
+            z-index: 1000;
+        }
+        .loader {
+            background: url('/img/loading32.gif') scroll no-repeat 0 0;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            left: 50%;
+        }
+    </style>
+    <style type = "text/css">
+        .colHeadr {text-align:center;}     
+    </style>
+    <script>
+       function showLoading(){
+           $('#load_scrl').css('top', $(document).scrollTop() + 200);
+            $('.loadingBox').show();
+       }
+       
+       function hideLoading(){
+           $('.loadingBox').hide();
+       }
+    </script>
+    <div id="load_scrl" class="loadingBox loader" style="display:none"> </div>
+    <div class="loadingBox overlay"> </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <apex:form id="formId" >
+        <apex:pageBlock id="pageBlock" title="Apex Page Code Coverage">
+            <div style="width: 1000px; ">  <!-- style="overflow: scroll; width: 1000px; height: 150px;" -->  
+                <apex:pageblockTable value="{!totalsAgr}" var="tagr" columnsWidth="20%,10%,10%,10%,20%,10%,10%">
+                    <apex:column headerValue="Trigger Status">
+                        <apex:outputText value="{!tagr.strTriggerStatus}" />
+                    </apex:column>
+                    <apex:column headerValue="Count" headerClass="colHeadr">
+                        <div align="right"><apex:outputText value="{!tagr.nTriggerTotal}" /></div>
+                    </apex:column>
+                    <apex:column headerValue="Pct of Total" headerClass="colHeadr">
+                        <div align="right"><apex:outputText value="{!tagr.nTriggerPct}" /></div>
+                    </apex:column>
+                    <apex:column >
+                        <center><span style="background-color:{!tagr.strColor};">          </span></center> <!-- blank space to the left is really an Alt-255 invisible character to force coloring -->
+                    </apex:column>
+                    <apex:column headerValue="Class Status">
+                        <apex:outputText value="{!tagr.strClassStatus}" />
+                    </apex:column>
+                    <apex:column headerValue="Count" headerClass="colHeadr">
+                        <div align="right"><apex:outputText value="{!tagr.nClassTotal}" /></div>
+                    </apex:column>
+                    <apex:column headerValue="Pct of Total" headerClass="colHeadr">
+                        <div align="right"><apex:outputText value="{!tagr.nClassPct}" /></div>
+                    </apex:column>
+                </apex:pageblockTable>
+            </div>
+
+            <P></P>                    
+            <apex:variable var="cnt" value="{!1}" />
+            <apex:outputLabel value="Total Coverage: {!totalCoverage}% " /> 
+            <apex:commandButton action="{!updateTotalCoverage}" value="Get Coverage Again" onclick="showLoading()" oncomplete="hideLoading()" rerender="formId"/>
+            <apex:commandButton action="{!saveTotalCoverage}" value="Save Coverage" onclick="showLoading()" oncomplete="hideLoading()" rerender="formId"/>
+            <apex:outputLabel value="   " />
+            <apex:pageblockTable value="{!apexPages}" var="ap">
+                <apex:column >
+                    <apex:outputlabel value="{!cnt}">
+                        <apex:variable value="{!cnt+1}" var="cnt"/>
+                    </apex:outputlabel>
+                </apex:column>
+                <!-- <apex:column headerValue="Class Name">
+                    <apex:outputLink value="/{!ap.Id}" target="_blank">{!ap.apexName}</apex:outputLink>
+                </apex:column> -->
+                    <apex:column >
+                        <apex:facet name="header">                                
+                            <apex:commandLink action="{!ViewData}" value="Class Name {!IF(sortToField=='apexName_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                                <apex:param value="apexName_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:outputLink value="/{!ap.Id}" target="_blank">{!ap.apexName}</apex:outputLink>
+                </apex:column>                                
+                <!-- <apex:column value="{!ap.ApiVersion}" headerValue="Api"/> -->
+                <apex:column >
+                    <apex:facet name="header">                                
+                        <apex:commandLink action="{!ViewData}" value="Api {!IF(sortToField=='api_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                            <apex:param value="api_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                        </apex:commandLink>
+                    </apex:facet>
+                    <apex:outputText value="{!ap.ApiVersion}" />
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">                                
+                        <apex:commandLink action="{!ViewData}" value="Last Modified Date {!IF(sortToField=='lastmodifieddate_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                            <apex:param value="lastmodifieddate_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                        </apex:commandLink>
+                    </apex:facet>
+                    <apex:outputText value="{!ap.LastModifiedDate}" />
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">                                
+                        <apex:commandLink action="{!ViewData}" value="Last Modified By {!IF(sortToField=='lastmodifiedby_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                            <apex:param value="lastmodifiedby_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                        </apex:commandLink>
+                    </apex:facet>
+                    <apex:outputText value="{!ap.LastModifiedBy}" />
+                </apex:column>
+                <!-- <apex:column value="{!ap.LengthWithoutComments}" headerValue="Length Without Comments"/> -->
+                <apex:column >
+                    <apex:facet name="header">                                
+                        <apex:commandLink action="{!ViewData}" value="Length Without Comments {!IF(sortToField=='LengthWithoutComments_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                            <apex:param value="LengthWithoutComments_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                        </apex:commandLink>
+                    </apex:facet>
+                    <apex:outputText value="{!ap.LengthWithoutComments}" />
+                </apex:column>
+                <!-- <apex:column value="{!ap.linescovered}" headerValue="Covered Lines"/> -->
+                <apex:column >
+                    <apex:facet name="header">                                
+                        <apex:commandLink action="{!ViewData}" value="Covered Lines {!IF(sortToField=='linescovered_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                            <apex:param value="linescovered_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                        </apex:commandLink>
+                    </apex:facet>
+                    <apex:outputText value="{!ap.linescovered}" />
+                </apex:column>
+                <!-- <apex:column value="{!ap.linesUncovered}" headerValue="Uncoverd Lines"/> -->
+                <apex:column >
+                    <apex:facet name="header">                                
+                        <apex:commandLink action="{!ViewData}" value="Uncovered Lines {!IF(sortToField=='linesUncovered_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                            <apex:param value="linesUncovered_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                        </apex:commandLink>
+                    </apex:facet>
+                    <apex:outputText value="{!ap.linesUncovered}" />
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">                                
+                        <apex:commandLink action="{!ViewData}" value="Coverage % {!IF(sortToField=='percentCovered_SortField',IF(sortToDirection ='ASC','?','?'),'')}" reRender="pageBlock" onclick="showLoading()" oncomplete="hideLoading()" >
+                            <apex:param value="percentCovered_SortField" name="column" assignTo="{!sortToField}" ></apex:param>
+                        </apex:commandLink>
+                    </apex:facet>
+                    <font color="{!IF(ap.percentCovered >= 85, 'green', IF(ap.percentCovered < 75, 'red', 'orange'))}">
+                        <apex:outputtext value="{!ap.percentCovered}%" />
+                    </font>
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

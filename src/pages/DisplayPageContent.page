@@ -1,0 +1,42 @@
+<apex:page standardController="testing__c" extensions="testingCon" >
+ <apex:pageMessages />
+ <apex:form >
+ 
+ {!errorMessage}
+ <apex:pageBlock >
+  <apex:pageBlockSection >
+     <apex:inputField label="Testing Name" value="{!test.Name}"/>       
+  </apex:pageBlockSection>
+ </apex:pageBlock>
+ 
+ <apex:pageBlock >
+  <apex:pageBlockSection >
+     <apex:commandButton action="{!save}" value="SAVE"/>
+  </apex:pageBlockSection>
+ </apex:pageBlock>
+
+<apex:pageBlock >
+ 
+   
+     <apex:outputText value="{!testName}"/>        
+    
+  
+ </apex:pageBlock>
+ 
+ 
+ 
+  <apex:pageBlock >
+  <apex:pageBlockTable value="{!testingListRecord}" var="tr">
+   <B> <apex:column value="{!tr.Id}"/> </B>
+     <apex:column value="{!tr.Name}"/>        
+    
+  </apex:pageBlockTable>
+ </apex:pageBlock>
+ 
+ 
+ 
+ 
+ 
+ </apex:form>
+ 
+</apex:page>

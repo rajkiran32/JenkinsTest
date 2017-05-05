@@ -1,0 +1,21 @@
+<apex:page controller="RenderController">
+
+<apex:form >
+<apex:pageBlock title="Block A" rendered="{!abool}">
+        This is Block A.<br/><br/>        
+    </apex:pageBlock>
+    
+    <apex:pageBlock title="Block B" rendered="{!bbool}">
+        This is Block B.<br/><br/>
+    </apex:pageBlock> 
+    
+<apex:pageBlock >
+        <apex:commandButton value="Show A" action="{!showA}" rendered="{!sabool}" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <apex:commandButton value="Show B" action="{!showB}" rendered="{!sbbool}" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ </apex:pageBlock>
+
+</apex:form>
+
+</apex:page>

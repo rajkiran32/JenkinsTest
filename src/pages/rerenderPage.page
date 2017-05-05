@@ -1,0 +1,16 @@
+<apex:page controller="reRenderController" >
+ <apex:form >
+   <apex:pageBlock title="Refreshing the block">
+           <apex:commandButton action="{!increment}" value="Increment" rerender="refresh">
+           <apex:param assignTo="{!amount}" value="5"/>
+           </apex:commandButton>
+   
+    <apex:outputPanel id="refresh"> The Value is :  {!value}
+
+    </apex:outputPanel>
+    
+   
+   </apex:pageBlock>
+ 
+ </apex:form>
+</apex:page>

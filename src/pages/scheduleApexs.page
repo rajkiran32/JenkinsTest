@@ -1,0 +1,5 @@
+<apex:page controller="runSchedularClass">
+<apex:form >
+<apex:commandButton value="button" action="{!executeMethod}" />
+</apex:form>
+</apex:page>
