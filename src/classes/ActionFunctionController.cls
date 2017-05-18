@@ -1,4 +1,4 @@
-/*** Controller to check***/
+/*** -- Controller to check***/
 public class ActionFunctionController{
     String uname;
 
