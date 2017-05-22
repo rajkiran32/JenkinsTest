@@ -1,0 +1,9 @@
+#Mapping values
+#Thu May 04 10:12:50 CEST 2017
+ID=Id
+BILLINGSTREET=BillingStreet
+SHIPPINGCITY=ShippingCity
+BILLINGPOSTALCODE=BillingPostalCode
+BILLINGSTATE=BillingState
+NAME=Name
+BILLINGCITY=BillingCity

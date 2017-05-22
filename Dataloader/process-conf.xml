@@ -1,0 +1,38 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="ExportAccount"
+	class="com.salesforce.dataloader.process.ProcessRunner"
+	singleton="false">
+	<description>Update Status from Users</description>
+	<property name="name" value="UpdateUserStatus"/>
+	<property name="configOverrideMap">
+		<map>
+		
+			<entry key="sfdc.debugMessages" value="false"/>
+			<entry key="sfdc.debugMessagesFile" value="E:\Jenkins\jobs\Prepare_SandBox\Prepare_SandBox_Log\DataLoader\JOBID_a1w2600000CObgFAAT_STEPID_a0M26000002EoODEA0.log" />
+			
+			<entry key="sfdc.endpoint" value="https://rexis--SuppProdCP.cs85.my.salesforce.com"/>
+			<entry key="sfdc.username" value="nader.foroughi@dx.roche.com.suppprodcp"/>
+			<entry key="sfdc.password" value="452db61e7799f4c38324a29fa2130902"/>
+			<entry key="process.encryptionKeyFile" value="E:\Apps\DataLoader\Key\Global.key" /> 
+			
+			<entry key="sfdc.timeoutSecs" value="600"/>
+			<entry key="sfdc.loadBatchSize" value="200"/>
+			<entry key="sfdc.useBulkApi" value="true"/>
+			<entry key="sfdc.entity" value="account"/>		
+			
+			<entry key="process.operation" value="Extract"/>
+			<entry key="process.mappingFile" value="E:\Jenkins\jobs\Prepare_SandBox\workspace\src_dev\data_loader\ChangeUserStatus\account.sdl"/>
+			<entry key="process.outputSuccess" value="E:\Jenkins\jobs\Prepare_SandBox\Prepare_SandBox_Log\DataLoader\JOBID_a1w2600000CObgFAAT_STEPID_a0M26000002EoODEA0_output_Success.csv" /> 
+			<entry key="process.outputError" value="E:\Jenkins\jobs\Prepare_SandBox\Prepare_SandBox_Log\DataLoader\JOBID_a1w2600000CObgFAAT_STEPID_a0M26000002EoODEA0_output_Error.csv" /> 
+			<entry key="process.initialLastRunDate" value="2017-01-01T00:00:00.000-0800"/>
+			
+			
+			<entry key="dataAccess.type" value="csvRead" /> 
+			<entry key="dataAccess.name" value="E:\Jenkins\jobs\Prepare_SandBox\workspace\src_dev\data_loader\ChangeUserStatus\InactiveUser.csv" /> 
+				
+			
+		</map>
+	</property>
+	</bean>
+</beans>
