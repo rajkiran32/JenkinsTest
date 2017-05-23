@@ -11,9 +11,9 @@
 			<entry key="sfdc.debugMessages" value="false"/>
 			<entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\Jenkins\jobs\Jenkins Git Test\testjenkins.csv"/>
 			
-			<entry key="sfdc.endpoint" value="https://rexis--RexisPack.cs87.my.salesforce.com"/>
-			<entry key="sfdc.username" value="raj_kiran.swain@dx.roche.com.rexispack"/>
-			<entry key="sfdc.password" value="12dd31742fcbfad5a0485b3ae248aa68"/>
+			<entry key="sfdc.endpoint" value="https://login.salesforce.com"/>
+			<entry key="sfdc.username" value="sampathtechm.sfdc@gmail.com"/>
+			<entry key="sfdc.password" value="12dd31742fcbfad5321c22eb99f6c114"/>
 			<entry key="process.encryptionKeyFile" value="C:\Users\swainr2\AppData\Local\salesforce.com\Data Loader\key\Global.key"/> 
 			
 			<entry key="sfdc.timeoutSecs" value="600"/>
