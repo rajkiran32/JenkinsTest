@@ -4,12 +4,12 @@
 	class="com.salesforce.dataloader.process.ProcessRunner"
 	singleton="false">
 	<description>Update Status from Users</description>
-	<property name="name" value="UpdateUserStatus"/>
+	<property name="name" value="ExportAccount"/>
 	<property name="configOverrideMap">
 		<map>
 		
 			<entry key="sfdc.debugMessages" value="false"/>
-			<entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\Jenkins\jobs\Jenkins Git Test"/>
+			<entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\Jenkins\jobs\Jenkins Git Test\testjenkins.csv"/>
 			
 			<entry key="sfdc.endpoint" value="https://login.salesforce.com"/>
 			<entry key="sfdc.username" value="sampathtechm.sfdc@gmail.com"/>
@@ -23,8 +23,8 @@
 			
 			<entry key="process.operation" value="Extract"/>
 			<entry key="process.mappingFile" value="C:\Program Files (x86)\Jenkins\workspace\Jenkins Git Test\Dataloader\account.sdl"/>
-			<entry key="process.outputSuccess" value="C:\Program Files (x86)\Jenkins\jobs\Jenkins Git Test" /> 
-			<entry key="process.outputError" value="C:\Program Files (x86)\Jenkins\jobs\Jenkins Git Test" /> 
+			<entry key="process.outputSuccess" value="C:\Program Files (x86)\Jenkins\jobs\Jenkins Git Test\success.csv" /> 
+			<entry key="process.outputError" value="C:\Program Files (x86)\Jenkins\jobs\Jenkins Git Test\failure.csv" /> 
 			<entry key="process.initialLastRunDate" value="2017-01-01T00:00:00.000-0800"/>
 			
 			<entry key="dataAccess.type" value="csvRead" /> 
