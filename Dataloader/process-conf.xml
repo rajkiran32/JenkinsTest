@@ -28,7 +28,7 @@
 			<entry key="process.initialLastRunDate" value="2017-01-01T00:00:00.000-0800"/>
 			
 			<entry key="dataAccess.type" value="csvWrite" /> 
-			<entry key="dataAccess.name" value="C:\AntScripts_for_Test\JenkinsTest_Local\Dataloader\account.csv"/> 
+			<entry key="dataAccess.name" value="account.csv"/> 
 				
 			
 		</map>
