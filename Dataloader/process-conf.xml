@@ -9,7 +9,7 @@
 		<map>
 		
 			<entry key="sfdc.debugMessages" value="false"/>
-			<entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\Jenkins\workspace\Jenkins Git Test\Dataloader\testjenkins.csv"/>
+			<entry key="sfdc.debugMessagesFile" value="C:\AntScripts_for_Test\JenkinsTest_Local\Dataloader\testjenkins.csv"/>
 			
 			<entry key="sfdc.endpoint" value="https://rexis--rexisat.cs87.my.salesforce.com"/>
 			<entry key="sfdc.username" value="deploymentbuild@dx.roche.com.rexisat"/>
@@ -23,12 +23,12 @@
 			
 			<entry key="process.operation" value="extract"/>
 			<entry key="sfdc.extractionSOQL" value="Select id from account"/>
-			<entry key="process.outputSuccess" value="C:\Program Files (x86)\Jenkins\workspace\Jenkins Git Test\Dataloader" /> 
-			<entry key="process.outputError" value="C:\Program Files (x86)\Jenkins\workspace\Jenkins Git Test\Dataloader" /> 
+			<entry key="process.outputSuccess" value="C:\AntScripts_for_Test\JenkinsTest_Local\Dataloader"/> 
+			<entry key="process.outputError" value="C:\AntScripts_for_Test\JenkinsTest_Local\Dataloader"/> 
 			<entry key="process.initialLastRunDate" value="2017-01-01T00:00:00.000-0800"/>
 			
 			<entry key="dataAccess.type" value="csvWrite" /> 
-			<entry key="dataAccess.name" value="C:\Program Files (x86)\Jenkins\workspace\Jenkins Git Test\Dataloader\account.csv" /> 
+			<entry key="dataAccess.name" value="C:\AntScripts_for_Test\JenkinsTest_Local\Dataloader\account.csv"/> 
 				
 			
 		</map>
